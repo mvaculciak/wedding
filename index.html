@@ -223,17 +223,17 @@
 
     /* ══ MOBILNÍ VERZE ══ */
     @media (max-width: 768px) and (orientation: landscape) {
-      html { overflow-x: hidden; }
-      #hero { min-height: auto; padding: 3rem 2rem; }
+      html, body { overflow-x: hidden; }
+      #hero { min-height: auto; padding: 3rem 2rem; overflow: hidden;}
       .leaf1 { width: 150px; top: -20px; right: -20px; }
       .leaf2 { width: 160px; bottom: -30px; right: 0px; }
       .leaf3 { width: 130px; bottom: 50px; right: -60px; }
       .church { width: 200px; bottom: -10px; left: -20px; }
     }
     @media (max-width: 768px) and (orientation: portrait) {
-      #hero { justify-content: flex-start; padding: 8rem 2rem 4rem; min-height: 90vh; }
+      #hero { justify-content: flex-start; padding: 8rem 2rem 4rem; min-height: 100vh; }
       .leaf1 { width: 150px; top: -20px; right: -20px; }
-      .leaf2 { width: 150px; top: -20px; left: -20px; }
+      .leaf2 { width: 150px; top: -20px; left: -20px; transform: rotate(180deg);}
       .leaf3 { display: none; }
       .church { display: none; }
     }
