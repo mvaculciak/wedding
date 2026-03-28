@@ -1,0 +1,484 @@
+<!-- TOD
+  pridat Q&A? (at to vyplnej za kazdyho, do kdy)
+  upravit formular (no mail, pisnicka, jidlo preference (choice ze tri), dieteticky poznamky)
+  at po odpovedi zmizi "odpovezte do 1.dubna" a "potvrzeni ucasti"
+  Playfair Display pro nazvy a Jost pro text, oboje z Google Fonts
+  ???
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  Cteni a zalm (mamka, ???, Anezka?)
+  domluvit varhany
+-->
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janička & Matěj | 31. května 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Caveat:wght@400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" /> -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #f0ebe0;
+      color: #1e1e1e;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ══ HERO ══ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 6rem 2rem 5rem;
+      background-color: #fbf2e0;
+      /* background-color: #f0ebe0; */
+      overflow: hidden;
+    }
+    .graphic_decor { position: absolute; pointer-events: none; }
+    .leaf1 {
+      top: -40px; right: -50px;
+      width: 400px;
+      transform: scaleX(-1) rotate(200deg);
+    }
+    .leaf2 {
+      bottom: -70px; right: 20px;
+      width: 350px;
+      transform: rotate(10deg) scaleX(-1);
+    }
+    .leaf3 {
+      bottom: 100px; right: -100px;
+      width: 250px;
+      transform: scaleX(-1) rotate(-45deg);
+    }
+    .church {
+      bottom: -25px; left: -70px;
+      width: 400px;
+      /* opacity: 0.8; */
+      /* transform: rotate(40deg); */
+      /* transform: scaleX(.8); */
+    }
+
+    .save-label {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #1e1e1e;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      animation: fadeUp 0.9s ease both;
+    }
+    .names {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      color: #4e756e;
+      animation: fadeUp 1s 0.2s ease both;
+      padding: 0 0.15em;
+    }
+    .ampersand { font-style: italic; color: #7a9e96; margin: 0 0.3em; font-family: 'Calibri', serif;}
+    .date-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 400;
+      color: #1e1e1e;
+      margin: 0.7rem 0 0.5rem;
+      animation: fadeUp 1s 0.35s ease both;
+    }
+    .location {
+      font-size: 0.88rem;
+      color: #6b6458;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      animation: fadeUp 1s 0.45s ease both;
+    }
+    .divider { width: 70px; height: 1px; background-color: #7a9e96; margin: 2rem auto; animation: fadeUp 1s 0.5s ease both; }
+
+    .countdown { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s 0.6s ease both; }
+    .countdown-item { display: flex; flex-direction: column; align-items: center; }
+    .countdown-num { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; color: #4e756e; }
+    .countdown-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6458; margin-top: 0.3rem; }
+
+    .rsvp-btn {
+      display: inline-block;
+      margin-top: 2.8rem;
+      padding: 0.9rem 2.8rem;
+      background-color: #4e756e;
+      /* background-color: #496e6e; */
+      color: #faf8f4;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.25s, transform 0.2s;
+      animation: fadeUp 1s 0.72s ease both;
+    }
+    /* .rsvp-btn:hover { background-color: #7a9e96} */
+    .rsvp-btn:hover { background-color: #4e756eBF;}
+
+    /* ══ PLÁN DNE ══ */
+    #plan {
+      background-color: #faf8f4;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .plan-leaf1 {
+      position: absolute;
+      bottom: -100px; left: -90px;
+      width: 340px;
+      opacity: 0.20;
+      transform: rotate(-10deg);
+      pointer-events: none;
+    }
+    .plan-leaf2 {
+      position: absolute;
+      top: -70px; right: -70px;
+      width: 260px;
+      opacity: 0.18;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+
+    .section-label { font-family: 'Caveat', cursive; font-size: 1.7rem; color: #4e756e; text-align: center; margin-bottom: 3.5rem; }
+    /* .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 400; text-align: center; margin-bottom: 3.5rem; color: #1e1e1e; } */
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 400; text-align: center; margin-bottom: .5rem; color: #1e1e1e; }
+    .rsvp-note { font-family: 'Caveat', cursive; font-size: 1.rem; color: #6b6458; text-align: center; }
+
+    .timeline { max-width: 500px; margin: 0 auto; position: relative; padding-left: 3rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background-color: #a8c4be; }
+    .timeline-item { position: relative; margin-bottom: 2.2rem; opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .timeline-item.visible { opacity: 1; transform: none; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .t-dot { position: absolute; left: -3rem; top: 0.42rem; width: 13px; height: 13px; border-radius: 50%; background-color: #4e756e; border: 3px solid #faf8f4; box-shadow: 0 0 0 1px #4e756e; transform: translateX(-6px); }
+    .t-time { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #7a9e96; letter-spacing: 0.05em; margin-bottom: 0.05rem; }
+    .t-title { font-weight: 500; font-size: 1.05rem; color: #1e1e1e; }
+    .t-note { font-size: 0.87rem; color: #6b6458; margin-top: 0.1rem; }
+
+    /* ══ Q&A ══ */
+    #qna { background-color: #f0ebe0; padding: 6rem 2rem; text-align: center; }
+
+    .qna-list {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: left;
+    }
+    .qna-item {
+      /* border-left: 1px solid #a8c4be; */
+      border-left: 1px solid #4e756e;
+      padding-left: 1.5rem;
+    }
+    .qna-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #1e1e1e;
+      margin-bottom: 0.4rem;
+    }
+    .qna-answer {
+      font-size: 0.92rem;
+      color: #6b6458;
+      line-height: 1.7;
+    }
+
+    /* ══ RSVP ══ */
+    #rsvp { background-color: #e4ddd0; padding: 6rem 2rem; text-align: center; }
+    .rsvp-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+      width: 100%; padding: 0.85rem 1.1rem; background-color: #faf8f4;
+      border: 1px solid #a8c4be; font-family: 'Jost', sans-serif;
+      font-size: 0.95rem; font-weight: 300; color: #1e1e1e;
+      outline: none; transition: border-color 0.2s; border-radius: 0;
+      -webkit-appearance: none; appearance: none;
+    }
+    .rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus { border-color: #4e756e; }
+    .rsvp-form textarea { resize: vertical; min-height: 90px; }
+    .rsvp-form select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234e756e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 1rem center;
+      background-color: #faf8f4; padding-right: 2.5rem; cursor: pointer;
+    }
+    .submit-btn {
+      padding: 1rem 2rem; background-color: #4e756e; color: #faf8f4; border: none;
+      font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+      transition: background-color 0.25s, transform 0.2s;
+    }
+    .submit-btn:hover { background-color: #4e756eBF; transform: translateY(-2px); }
+    .form-success { display: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: #4e756e; padding: 2rem 0; }
+
+    footer { background-color: #f0ebe0; text-align: center; padding: 2.2rem; font-size: 0.8rem; color: #6b6458; letter-spacing: 0.08em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Obrázky jsou v podsložce images/ vedle tohoto HTML souboru -->
+  <img class="graphic_decor leaf1" src="images/leaf1.png" alt="" />
+  <img class="graphic_decor leaf2" src="images/leaf2.png" alt="" />
+  <img class="graphic_decor leaf3" src="images/leaf3.png" alt="" />
+  <img class="graphic_decor church" src="images/church_shifted_b.png" alt="" />
+
+  <div class="save-label">Budeme se brát!</div>
+  <h1 class="names"><em>Janička</em><span class="ampersand">&amp;</span><em>Matěj</em></h1>
+  <div class="date-heading">31. května 2026</div>
+  <p class="location">Kostel Nejsvětějšího Salvátora &nbsp;·&nbsp; Praha</p>
+  <div class="divider"></div>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown-item"><span class="countdown-num" id="cd-days">—</span><span class="countdown-label">dní</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-hours">—</span><span class="countdown-label">hodin</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-minutes">—</span><span class="countdown-label">minut</span></div>
+    <div class="countdown-item"><span class="countdown-num" id="cd-seconds">—</span><span class="countdown-label">sekund</span></div>
+  </div>
+
+  <a href="#rsvp" class="rsvp-btn">RSVP</a>
+</section>
+
+
+<!-- PLÁN DNE -->
+<section id="plan">
+  <!-- <img class="plan-leaf1" src="images/leaf1.png" alt="" /> -->
+  <!-- <img class="plan-leaf2" src="images/leaf2.png" alt="" /> -->
+
+  <h2 class="section-title">program</h2>
+  <div class="section-label">11:45 - 03:00</div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">11:45</div>
+      <div class="t-title">Setkání u kostela</div>
+      <div class="t-note">Studentské nádvoří Klementina</div>
+      <!-- <div class="t-note">prosíme, dostavte se alespoň 15 minut před obřadem</div> -->
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">12:00</div>
+      <div class="t-title">Obřad</div>
+      <div class="t-note">Kostel Nejsvětějšího Salvátora, Praha 1</div>
+      <!-- <div class="t-note">prosíme, dostavte se alespoň 15 minut před obřadem</div> -->
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">13:00</div>
+      <div class="t-title">Gratulace &amp; focení</div>
+      <div class="t-note">před kostelem</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">13:50</div>
+      <div class="t-title">Přesun na recepci</div>
+      <div class="t-note">odjezd tramvají ze Staroměstské</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">14:30</div>
+      <div class="t-title">Příjezd na recepci</div>
+      <div class="t-note">přivítání hostů, welcome drink, dary</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">15:00</div>
+      <div class="t-title">Slavnostní oběd</div>
+      <div class="t-note">přípitky, proslovy, oběd</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">17:00</div>
+      <div class="t-title">Krájení dortu</div>
+      <div class="t-note">sladká chvilka a dezerty</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">18:00</div>
+      <div class="t-title">První tanec</div>
+      <div class="t-note">a otevření tanečního parketu</div>
+    </div>
+    <div class="timeline-item">
+      <div class="t-dot"></div>
+      <div class="t-time">19:00 → </div>
+      <div class="t-title">Večerní občerstvení a zábava</div>
+      <div class="t-note">dobroty z grilu, hudba, tanec</div>
+    </div>
+  </div>
+</section>
+
+<!-- Q&A -->
+<section id="qna">
+  <h2 class="section-title">Q&A</h2>
+  <div class="section-label">vše, co potřebujete vědět</div>
+
+  <div class="qna-list">
+
+    <div class="qna-item">
+      <div class="qna-question">Jaký je dress code?</div>
+      <div class="qna-answer">Svatební. Na konkrétních barvách nelpíme, držte se ale prosím mimo odkaz Dana Nekonečného.</div>
+    </div>
+    
+    <div class="qna-item">
+      <div class="qna-question">Budeme venku nebo vevnitř?</div>
+      <div class="qna-answer">Vyjma přesunu k tramvajím bude celou dobu možnost být vevnitř, když se ale poštěstí, dojde i na grilování na zahrádce.</div>
+    </div>
+
+    <div class="qna-item">
+      <div class="qna-question">Jak je to s dětmi?</div>
+      <div class="qna-answer">Den bychom si s vámi rádi užili naplno a potěší nás, když tentokrát necháte děti doma. 
+      </div>
+    </div>
+
+    <div class="qna-item">
+      <div class="qna-question">Svatební dary?</div>
+      <div class="qna-answer">Asi víte, že si nepotrpíme na příliš mnoho věcí, svatební příspěvek nás ale určitě potěší.</div>
+    </div>
+
+    <div class="qna-item">
+      <div class="qna-question">Co když mi ujede tramvaj?</div>
+      <div class="qna-answer">Smůla. Tramvaje J♡M (modrá a dvojitá červená) jsou vyhrazené jen a jen pro nás, nemohou ale čekat. A protože je modrá jen jedna, na hostinu vás poveze ta červená. No a kdyby vám opravdu ujela, nebojte, welcome drink na vás v Mazlovi počká, cesta není dlouhá ani linkovými tramvajemi nebo metrem.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RSVP -->
+<!-- <section id="rsvp">
+  <h2 class="section-title" id="rsvp-heading">potvrzení účasti</h2>
+  <div class="section-label" id="rsvp-deadline">do 12. dubna 2026</div>
+
+  <form class="rsvp-form" id="rsvpForm">
+    <div class="form-row">
+      <input type="text"  name="name"  placeholder="jméno a příjmení" required />
+      <input type="email" name="email" placeholder="E-mail" />
+    </div>
+    <select name="attending" required>
+      <option value="" disabled selected>Zúčastním se…</option>
+      <option value="yes">Ano, přijdu! 🎉</option>
+      <option value="no">Bohužel nepřijdu</option>
+    </select>
+    <input type="number" name="guests" min="0" max="10" placeholder="Počet dalších hostů (0 = přijdu sám/a)" />
+    <textarea name="note" placeholder="Poznámka (alergie, přání, strava…)"></textarea>
+    <button type="submit" class="submit-btn">Odeslat odpověď</button>
+  </form>
+    <div class="form-success" id="formSuccess">Děkujeme a těšíme se!</div>
+</section> -->
+<section id="rsvp">
+  <h2 class="section-title" id="rsvp-heading">potvrzení účasti</h2>
+  <div class="section-label" id="rsvp-deadline">do 12. dubna 2026</div>
+
+  <form class="rsvp-form" id="rsvpForm">
+    <div class="form-row">
+      <input type="text"  name="name"  placeholder="Jméno a příjmení" required />
+      <select name="attending" required>
+        <option value="" disabled selected>Zúčastním se ...</option>
+        <option value="yes"> Ano, dorazím! </option>
+        <option value="no">  Bohužel, nedorazím. </option>
+      </select>
+    </div>
+    <input type="text"  name="song"  placeholder="Do slavnostního playlistu chci přidat písničku ..." />
+    <div class="form-row">
+      <select name="meal" required>
+        <option value="" disabled selected>Dal(a) bych si ...</option>
+        <option value="1"> maso </option>
+        <option value="2"> zeleninu (vegan) </option>
+        <option value="3"> rybu </option>
+      </select>
+      <input type="text"  name="note"  placeholder="Poznámky, alergie, ..." />
+      <!-- <input type="text"  name="name"  placeholder="dietetické požadavky" required /> -->
+    </div>
+    <button type="submit" class="submit-btn">ODESLAT</button>
+    <div class="rsvp-note">*Prosíme, vyplňte za každého hosta zvlášť.</div>
+  </form>
+  <div class="form-success" id="formSuccess">Děkujeme a těšíme se!</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>Janička &amp; Matěj &nbsp;·&nbsp; 31. května 2026 &nbsp;·&nbsp; Praha</footer>
+
+
+<script>
+  /* COUNTDOWN */
+  const weddingDate = new Date('2026-05-31T12:00:00');
+  function updateCountdown() {
+    const diff = weddingDate - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p style="font-family:\'Playfair Display\',serif;font-size:1.4rem;font-style:italic;color:#4e756e">Dnes je ten den! 🎉</p>';
+      return;
+    }
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cd-days').textContent    = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('cd-minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('cd-seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* TIMELINE SCROLL REVEAL */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 200);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+  /* RSVP SUBMIT */
+  document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // const data = Object.fromEntries(new FormData(e.target));
+    const btn = e.target.querySelector('.submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'ODESLAT';
+    const data = Object.fromEntries(new FormData(e.target));
+
+
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMLkTC9AhBH-7lppbBanJ3iHvb-fCHXK09BimKTtTfJT3Y9ANZKZpq5NCnEV6c-avyFw/exec';
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) { console.warn(err); }
+
+    document.getElementById('rsvp-deadline').style.display = 'none';
+    document.getElementById('rsvp-heading').style.display  = 'none';
+    e.target.style.display = 'none';
+    document.getElementById('formSuccess').style.display   = 'block';
+  });
+</script>
+</body>
+</html>
