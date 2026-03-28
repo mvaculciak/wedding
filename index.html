@@ -222,13 +222,12 @@
     }
 
     /* ══ MOBILNÍ VERZE ══ */
-    @media (max-width: 768px) and (orientation: landscape) {
-      html, body { overflow-x: hidden; }
+    @media (max-height: 430px) and (orientation: landscape) {
       #hero { min-height: auto; padding: 3rem 2rem; overflow: hidden; }
-      .leaf1 { width: 18vw; top: -10px; right: -10px; }
-      .leaf2 { width: 20vw; bottom: -20px; right: 0px; }
-      .leaf3 { width: 15vw; bottom: 30px; right: -30px; }
-      .church { width: 22vw; bottom: -10px; left: -10px; }
+      .leaf1 { width: 160px; top: -15px; right: -15px; }
+      .leaf2 { width: 150px; bottom: -20px; right: 0px; }
+      .leaf3 { width: 130px; bottom: 30px; right: -30px; }
+      .church { width: 200px; bottom: -10px; left: -15px; }
     }
     @media (max-width: 768px) and (orientation: portrait) {
       #hero { justify-content: flex-start; padding: 8rem 2rem 4rem; min-height: 100vh; }
