@@ -119,6 +119,14 @@
       animation: fadeUp 1s 0.72s ease both;
     }
     .rsvp-btn:hover { background-color: #4e756eBF;}
+    .rsvp-form select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .rsvp-form input:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
     /* ══ PLÁN DNE ══ */
     #plan {
@@ -415,14 +423,13 @@
     </div>
     <input type="text"  name="song"  placeholder="Do slavnostního playlistu chci přidat písničku ..." />
     <div class="form-row">
-      <select name="meal" required>
+      <select name="meal">
         <option value="" disabled selected>Dal(a) bych si ...</option>
         <option value="1"> maso </option>
         <option value="2"> zeleninu (vegan) </option>
         <option value="3"> rybu </option>
       </select>
       <input type="text"  name="note"  placeholder="Poznámky, alergie, ..." />
-      <!-- <input type="text"  name="name"  placeholder="dietetické požadavky" required /> -->
     </div>
     <button type="submit" class="submit-btn">ODESLAT</button>
     <div class="rsvp-note">*Prosíme, vyplňte za každého hosta zvlášť.</div>
@@ -503,6 +510,43 @@
       alert('Formulář se nepodařilo odeslat. Zkuste to prosím znovu.');
     }
   });
+  const attendingSelect = document.querySelector('select[name="attending"]');
+  const mealSelect = document.querySelector('select[name="meal"]');
+  const noteInput = document.querySelector('input[name="note"]');
+  const songInput = document.querySelector('input[name="song"]');
+
+function toggleMealRequirement() {
+  if (attendingSelect.value === 'yes') {
+    // přijde
+    mealSelect.required = true;
+    mealSelect.disabled = false;
+    noteInput.disabled = false;
+    songInput.disabled = false;
+
+  } else if (attendingSelect.value === 'no') {
+    mealSelect.required = false;
+    mealSelect.disabled = true;
+    mealSelect.value = '';
+
+    noteInput.disabled = true;
+    noteInput.value = '';
+
+    songInput.disabled = true;
+    songInput.value = '';
+
+  } else {
+    mealSelect.required = false;
+    mealSelect.disabled = false;
+
+    noteInput.disabled = false;
+    songInput.disabled = false;
+  }
+}
+
+  attendingSelect.addEventListener('change', toggleMealRequirement);
+
+  // inicializace při načtení stránky
+  toggleMealRequirement();
 </script>
 </body>
 </html>
