@@ -287,7 +287,7 @@
 <section id="plan">
 
   <h2 class="section-title">program</h2>
-  <div class="section-label">11:45 - 02:30</div>
+  <div class="section-label">11:45 - 03:00</div>
 
   <div class="timeline">
     <div class="timeline-item">
@@ -382,7 +382,7 @@
 
     <div class="qna-item">
       <div class="qna-question">Jak je to s dětmi?</div>
-      <div class="qna-answer">Den bychom si s vámi rádi užili naplno a potěší nás, když tentokrát necháte malé děti doma. 
+      <div class="qna-answer">Den bychom si s vámi rádi užili naplno a potěší nás, když tentokrát necháte děti doma. 
       </div>
     </div>
 
@@ -464,11 +464,14 @@
   /* RSVP SUBMIT */
   document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = e.target.querySelector('.submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'ODESÍLÁM';
-    const data = Object.fromEntries(new FormData(e.target));
 
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'ODESÍLÁM...';
+    }
 
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMLkTC9AhBH-7lppbBanJ3iHvb-fCHXK09BimKTtTfJT3Y9ANZKZpq5NCnEV6c-avyFw/exec';
 
@@ -476,15 +479,28 @@
       await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: new FormData(form)
       });
-    } catch(err) { console.warn(err); }
 
-    document.getElementById('rsvp-deadline').style.display = 'none';
-    document.getElementById('rsvp-heading').style.display  = 'none';
-    e.target.style.display = 'none';
-    document.getElementById('formSuccess').style.display   = 'block';
+      const deadline = document.getElementById('rsvp-deadline');
+      const heading = document.getElementById('rsvp-heading');
+      const success = document.getElementById('formSuccess');
+
+      if (deadline) deadline.style.display = 'none';
+      if (heading) heading.style.display = 'none';
+      form.style.display = 'none';
+      if (success) success.style.display = 'block';
+
+    } catch (err) {
+      console.error('Chyba při odeslání formuláře:', err);
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'ODESLAT';
+      }
+
+      alert('Formulář se nepodařilo odeslat. Zkuste to prosím znovu.');
+    }
   });
 </script>
 </body>
