@@ -1,8 +1,20 @@
+<!-- TOD
+  pridat Q&A? (at to vyplnej za kazdyho, do kdy)
+  upravit formular (no mail, pisnicka, jidlo preference (choice ze tri), dieteticky poznamky)
+  at po odpovedi zmizi "odpovezte do 1.dubna" a "potvrzeni ucasti"
+  Playfair Display pro nazvy a Jost pro text, oboje z Google Fonts
+  ???
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  Cteni a zalm (mamka, ???, Anezka?)
+  domluvit varhany
+-->
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Janička & Matěj | 31. května 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,8 +33,6 @@
       font-weight: 300;
       line-height: 1.75;
       overflow-x: hidden;
-      width: 100%;
-      max-width: 100%;
     }
 
     /* ══ HERO ══ */
@@ -58,6 +68,9 @@
     .church {
       bottom: -25px; left: -70px;
       width: 400px;
+      /* opacity: 0.8; */
+      /* transform: rotate(40deg); */
+      /* transform: scaleX(.8); */
     }
 
     .save-label {
@@ -107,6 +120,7 @@
       margin-top: 2.8rem;
       padding: 0.9rem 2.8rem;
       background-color: #4e756e;
+      /* background-color: #496e6e; */
       color: #faf8f4;
       font-family: 'Jost', sans-serif;
       font-weight: 400;
@@ -117,6 +131,7 @@
       transition: background-color 0.25s, transform 0.2s;
       animation: fadeUp 1s 0.72s ease both;
     }
+    /* .rsvp-btn:hover { background-color: #7a9e96} */
     .rsvp-btn:hover { background-color: #4e756eBF;}
 
     /* ══ PLÁN DNE ══ */
@@ -143,9 +158,10 @@
       pointer-events: none;
     }
 
-    .section-label { font-family: 'Caveat', cursive; font-size: 1.7rem; color: #4e756e; text-align: center; margin-bottom: 3.5rem;}
+    .section-label { font-family: 'Caveat', cursive; font-size: 1.7rem; color: #4e756e; text-align: center; margin-bottom: 3.5rem; }
+    /* .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 400; text-align: center; margin-bottom: 3.5rem; color: #1e1e1e; } */
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 400; text-align: center; margin-bottom: .5rem; color: #1e1e1e; }
-    .rsvp-note { font-family: 'Caveat'; font-size: 1.rem; color: #6b6458; text-align: center; }
+    .rsvp-note { font-family: 'Caveat', cursive; font-size: 1.rem; color: #6b6458; text-align: center; }
 
     .timeline { max-width: 500px; margin: 0 auto; position: relative; padding-left: 3rem; }
     .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background-color: #a8c4be; }
@@ -184,6 +200,12 @@
       color: #6b6458;
       line-height: 1.7;
     }
+    .secret-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: default;
+    }
+
 
     /* ══ RSVP ══ */
     #rsvp { background-color: #e4ddd0; padding: 6rem 2rem; text-align: center; }
@@ -220,30 +242,13 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* ══ MOBILNÍ VERZE ══ */
-    @media (max-height: 430px) and (orientation: landscape) {
-      #hero { min-height: auto; padding: 3rem 2rem; overflow: hidden; }
-      .leaf1 { width: 160px; top: -15px; right: -15px; }
-      .leaf2 { width: 180px; bottom: -30px; right: 0px; }
-      .leaf3 { width: 150px; bottom: 70px; right: -60px; }
-      .church { width: 200px; bottom: -10px; left: -15px; }
-    }
-    @media (max-width: 768px) and (orientation: portrait) {
-      #hero { justify-content: flex-start; padding: 8rem 2rem 4rem; min-height: 100vh; }
-      .leaf1 { width: 150px; top: -20px; right: -20px; }
-      .leaf2 { width: 150px; top: -20px; left: -20px; transform: rotate(180deg) scaleX(-1);}
-      .leaf3 { display: none; }
-      .church { display: none; }
-      .location-dot { display: none; }
-      .location { display: flex; flex-direction: column; align-items: center; }
-    }
   </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section id="hero">
+  <!-- Obrázky jsou v podsložce images/ vedle tohoto HTML souboru -->
   <img class="graphic_decor leaf1" src="images/leaf1.png" alt="" />
   <img class="graphic_decor leaf2" src="images/leaf2.png" alt="" />
   <img class="graphic_decor leaf3" src="images/leaf3.png" alt="" />
@@ -252,7 +257,7 @@
   <div class="save-label">Budeme se brát!</div>
   <h1 class="names"><em>Janička</em><span class="ampersand">&amp;</span><em>Matěj</em></h1>
   <div class="date-heading">31. května 2026</div>
-  <p class="location">Kostel Nejsvětějšího Salvátora <span class="location-dot">&nbsp;·&nbsp;</span> Praha</p>
+  <p class="location">Kostel Nejsvětějšího Salvátora &nbsp;·&nbsp; Praha</p>
   <div class="divider"></div>
 
   <div class="countdown" id="countdown">
@@ -268,6 +273,8 @@
 
 <!-- PLÁN DNE -->
 <section id="plan">
+  <!-- <img class="plan-leaf1" src="images/leaf1.png" alt="" /> -->
+  <!-- <img class="plan-leaf2" src="images/leaf2.png" alt="" /> -->
 
   <h2 class="section-title">program</h2>
   <div class="section-label">11:45 - 03:00</div>
@@ -278,12 +285,14 @@
       <div class="t-time">11:45</div>
       <div class="t-title">Setkání u kostela</div>
       <div class="t-note">Studentské nádvoří Klementina</div>
+      <!-- <div class="t-note">prosíme, dostavte se alespoň 15 minut před obřadem</div> -->
     </div>
     <div class="timeline-item">
       <div class="t-dot"></div>
       <div class="t-time">12:00</div>
       <div class="t-title">Obřad</div>
       <div class="t-note">Kostel Nejsvětějšího Salvátora, Praha 1</div>
+      <!-- <div class="t-note">prosíme, dostavte se alespoň 15 minut před obřadem</div> -->
     </div>
     <div class="timeline-item">
       <div class="t-dot"></div>
@@ -301,7 +310,6 @@
       <div class="t-dot"></div>
       <div class="t-time">14:30</div>
       <div class="t-title">Příjezd na recepci</div>
-      <div class="t-note">Mazel Vinohrady</div>
       <div class="t-note">přivítání hostů, welcome drink, dary</div>
     </div>
     <div class="timeline-item">
@@ -314,7 +322,7 @@
       <div class="t-dot"></div>
       <div class="t-time">17:00</div>
       <div class="t-title">Krájení dortu</div>
-      <div class="t-note">sladká chvilka, dezerty, káva</div>
+      <div class="t-note">sladká chvilka a dezerty</div>
     </div>
     <div class="timeline-item">
       <div class="t-dot"></div>
@@ -361,12 +369,34 @@
 
     <div class="qna-item">
       <div class="qna-question">Co když mi ujede tramvaj?</div>
-      <div class="qna-answer">Smůla. Tramvaje J♡M (modrá a dvojitá červená) jsou vyhrazené jen a jen pro nás, nemohou ale čekat. A protože je modrá jen jedna, na hostinu vás poveze ta červená. No a kdyby vám opravdu ujela, nebojte, welcome drink na vás v Mazlovi počká, cesta není dlouhá ani linkovými tramvajemi nebo metrem.</div>
+      <div class="qna-answer"><a href="images/smula.gif" class="secret-link">Smůla.</a> Tramvaje J♡M (modrá a dvojitá červená) jsou vyhrazené jen a jen pro nás, nemohou ale čekat. A protože je modrá jen jedna, na hostinu vás poveze ta červená. No a kdyby vám opravdu ujela, nebojte, welcome drink na vás v Mazlovi počká, cesta není dlouhá ani linkovými tramvajemi nebo metrem.</div>
     </div>
 
   </div>
 </section>
 
+
+<!-- RSVP -->
+<!-- <section id="rsvp">
+  <h2 class="section-title" id="rsvp-heading">potvrzení účasti</h2>
+  <div class="section-label" id="rsvp-deadline">do 12. dubna 2026</div>
+
+  <form class="rsvp-form" id="rsvpForm">
+    <div class="form-row">
+      <input type="text"  name="name"  placeholder="jméno a příjmení" required />
+      <input type="email" name="email" placeholder="E-mail" />
+    </div>
+    <select name="attending" required>
+      <option value="" disabled selected>Zúčastním se…</option>
+      <option value="yes">Ano, přijdu! 🎉</option>
+      <option value="no">Bohužel nepřijdu</option>
+    </select>
+    <input type="number" name="guests" min="0" max="10" placeholder="Počet dalších hostů (0 = přijdu sám/a)" />
+    <textarea name="note" placeholder="Poznámka (alergie, přání, strava…)"></textarea>
+    <button type="submit" class="submit-btn">Odeslat odpověď</button>
+  </form>
+    <div class="form-success" id="formSuccess">Děkujeme a těšíme se!</div>
+</section> -->
 <section id="rsvp">
   <h2 class="section-title" id="rsvp-heading">potvrzení účasti</h2>
   <div class="section-label" id="rsvp-deadline">do 12. dubna 2026</div>
@@ -432,6 +462,7 @@
   /* RSVP SUBMIT */
   document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    // const data = Object.fromEntries(new FormData(e.target));
     const btn = e.target.querySelector('.submit-btn');
     btn.disabled = true;
     btn.textContent = 'ODESLAT';
